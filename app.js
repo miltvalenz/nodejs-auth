@@ -10,7 +10,7 @@ var usersRouter = require('./src/routes/users');
 var createUser = require('./src/routes/users/create.user');
 var detailsUser = require('./src/routes/users/details.user');
 var deleteUser = require('./src/routes/users/delete.user');
-
+var updateUser = require('./src/routes/users/update.user');
 
 var app = express();
 
@@ -38,6 +38,7 @@ const User = require('./src/models/user');
 app.use('/users', createUser(User));
 app.use('/users', detailsUser(User));
 app.use('/users', deleteUser(User));
+app.use('/users', updateUser(User));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
