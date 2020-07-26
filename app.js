@@ -11,6 +11,7 @@ var createUser = require('./src/routes/users/create.user');
 var detailsUser = require('./src/routes/users/details.user');
 var deleteUser = require('./src/routes/users/delete.user');
 var updateUser = require('./src/routes/users/update.user');
+var getUsers = require('./src/routes/users/get.users');
 
 var app = express();
 
@@ -31,7 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 
 //new routes 
 const User = require('./src/models/user');
@@ -39,6 +40,7 @@ app.use('/users', createUser(User));
 app.use('/users', detailsUser(User));
 app.use('/users', deleteUser(User));
 app.use('/users', updateUser(User));
+app.use('/users', getUsers(User));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
